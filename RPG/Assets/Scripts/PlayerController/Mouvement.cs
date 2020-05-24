@@ -25,7 +25,7 @@ public class Mouvement : MonoBehaviour
             this.x = a;
             this.y = b;
         }
-        public bool equals(variations v)
+        public bool equals(variations v)        // Vérifie s'il y a eu des variations ; true : pas de variations ; false : variations.
         {
             if (this.x == v.x && this.y == v.y)
             {
@@ -46,7 +46,7 @@ public class Mouvement : MonoBehaviour
     variations bas = new variations(0, -1);
     variations gauche = new variations(-1, 0);
     variations droite = new variations(1, 0);
-    Collection<variations> formeDessinee = new Collection<variations>();
+    Collection<variations> formeDessinee = new Collection<variations>();    // Pour lancer un sort, la souris doit effectuer une série de variations propre à chaque sort.
     Collection<Collection<variations>> formesIdentifiées = new Collection<Collection<variations>>();
     Collection<string> formesDispo = new Collection<string>();
     Collection<variations> boule = new Collection<variations>();
@@ -83,10 +83,10 @@ void Start()
         formesIdentifiées.Add(mur2); formesIdentifiées.Add(mur3); formesIdentifiées.Add(mur4);
 
         print("ça lance");
-        tailleCarreauX=Screen.width/3;
+        tailleCarreauX=Screen.width/3;      // Pour permettre une marge d'erreur, nous découpons l'écran en carreau. et la position de la souris est celle du carreau qui la contient.
         tailleCarreauY=Screen.height/3;
-        Vector3 mouseInScreen = Input.mousePosition;
-        positionXPrecedentNormee = (int)Mathf.Floor(mouseInScreen.x / tailleCarreauX);
+        Vector3 mouseInScreen = Input.mousePosition; // On récupère la positions de la souris sous forme d'un Vecteur à 3 dimensions.
+        positionXPrecedentNormee = (int)Mathf.Floor(mouseInScreen.x / tailleCarreauX);  
         positionYPrecedentNormee = (int)Mathf.Floor(mouseInScreen.y / tailleCarreauY);
     }
 
@@ -95,7 +95,7 @@ void Start()
     void Update()
     {
         string dessin2 = "Mauvaise forme";
-        //print(dessinEffectué);
+
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mouseInScreen = Input.mousePosition;
